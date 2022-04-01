@@ -1,3 +1,6 @@
+import static org.junit.Assert.*;
+import org.junit.Test;
+
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
 import java.util.stream.Collectors;
@@ -12,6 +15,54 @@ public class TestCases
     */
    @Test
    public void testGetName()
+   {
+      // This will not compile until you implement the Applicant class
+      List<CourseGrade> grades = Arrays.asList(
+         new CourseGrade("Intro to CS", 100),
+         new CourseGrade("Data Structures", 95),
+         new CourseGrade("Algorithms", 91),
+         new CourseGrade("Computer Organization", 91),
+         new CourseGrade("Operating Systems", 75),
+         new CourseGrade("Non-CS", 83)
+      );
+      Applicant testApplicant = new Applicant("Aakash", grades);
+      assertEquals("Aakash", testApplicant.getName());
+   }
+
+   @Test
+   public void testConstructor()
+   {
+      // This will not compile until you implement the Applicant class
+      List<CourseGrade> grades = Arrays.asList(
+         new CourseGrade("Intro to CS", 100),
+         new CourseGrade("Data Structures", 95),
+         new CourseGrade("Algorithms", 91),
+         new CourseGrade("Computer Organization", 91),
+         new CourseGrade("Operating Systems", 75),
+         new CourseGrade("Non-CS", 83)
+      );
+      Applicant testApplicant = new Applicant("Aakash", grades);
+      assertEquals("Aakash", testApplicant.getName());
+   }
+
+   @Test
+   public void testGetGrades()
+   {
+      // This will not compile until you implement the Applicant class
+      List<CourseGrade> grades = Arrays.asList(
+         new CourseGrade("Intro to CS", 100),
+         new CourseGrade("Data Structures", 95),
+         new CourseGrade("Algorithms", 91),
+         new CourseGrade("Computer Organization", 91),
+         new CourseGrade("Operating Systems", 75),
+         new CourseGrade("Non-CS", 83)
+      );
+      Applicant testApplicant = new Applicant("Aakash", grades);
+      assertEquals("Aakash", testApplicant.getName());
+   }
+
+   @Test
+   public void testGetGradesFor()
    {
       // This will not compile until you implement the Applicant class
       List<CourseGrade> grades = Arrays.asList(
@@ -63,21 +114,24 @@ public class TestCases
       final List<Class[]> expectedMethodParameters)
       throws NoSuchMethodException
    {
-      assertEquals(0, Applicant.class.getFields().length,
-              "Unexpected number of public fields");
+      // assertEquals(0, Applicant.class.getFields().length,
+      //         "Unexpected number of public fields");
+      assertEquals("Unexpected number of public fields", 0, Applicant.class.getFields().length);
 
       final List<Method> publicMethods = Arrays.stream(
          clazz.getDeclaredMethods())
             .filter(m -> Modifier.isPublic(m.getModifiers()))
             .collect(Collectors.toList());
 
-      assertTrue(expectedMethodNames.size()+1 >= publicMethods.size(),
-              "Unexpected number of public methods");
-
-      assertTrue(expectedMethodNames.size() == expectedMethodReturns.size(),
-              "Invalid test configuration");
-      assertTrue(expectedMethodNames.size() == expectedMethodParameters.size(),
-              "Invalid test configuration");
+      // assertTrue(expectedMethodNames.size()+1 >= publicMethods.size(),
+      //         "Unexpected number of public methods");
+      assertTrue("Unexpected number of public methods", expectedMethodNames.size()+1 >= publicMethods.size());
+      // assertTrue(expectedMethodNames.size() == expectedMethodReturns.size(),
+      //         "Invalid test configuration");
+      assertTrue("Invalid test configuration", expectedMethodNames.size() == expectedMethodReturns.size());
+      // assertTrue(expectedMethodNames.size() == expectedMethodParameters.size(),
+      //         "Invalid test configuration");
+      assertTrue("Invalid test configuration", expectedMethodNames.size() == expectedMethodParameters.size());
 
       for (int i = 0; i < expectedMethodNames.size(); i++)
       {
