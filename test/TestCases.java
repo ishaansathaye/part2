@@ -32,7 +32,6 @@ public class TestCases
    @Test
    public void testGetGrades()
    {
-      // This will not compile until you implement the Applicant class
       List<CourseGrade> grades = Arrays.asList(
          new CourseGrade("Intro to CS", 100),
          new CourseGrade("Data Structures", 95),
@@ -48,7 +47,6 @@ public class TestCases
    @Test
    public void testGetGradesFor()
    {
-      // This will not compile until you implement the Applicant class
       List<CourseGrade> grades = Arrays.asList(
          new CourseGrade("Intro to CS", 100),
          new CourseGrade("Data Structures", 95),
@@ -64,7 +62,6 @@ public class TestCases
    @Test
    public void testGetGPA()
    {
-      // This will not compile until you implement the Applicant class
       List<CourseGrade> grades = Arrays.asList(
          new CourseGrade("Intro to CS", 100),
          new CourseGrade("Data Structures", 95),
