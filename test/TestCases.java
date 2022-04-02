@@ -80,7 +80,6 @@ public class TestCases
    @Test
    public void testSimpleIf1()
    {
-      // This will not compile until you implement the Applicant class
       List<CourseGrade> grades = Arrays.asList(
          new CourseGrade("Intro to CS", 100),
          new CourseGrade("Data Structures", 95),
