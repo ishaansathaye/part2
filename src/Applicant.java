@@ -4,10 +4,12 @@ public class Applicant {
     
     private final String name;
     private final List<CourseGrade> grades;
+    private final double gpa;
 
-    public Applicant(String name, List<CourseGrade> grades) {
+    public Applicant(String name, List<CourseGrade> grades, double gpa) {
         this.name = name;
         this.grades = grades;
+        this.gpa = gpa;
     }
 
     public String getName()
@@ -28,6 +30,11 @@ public class Applicant {
         }
       }
       return null;
+    }
+
+    public double getGPA()
+    {
+      return gpa;
     }
 
 
