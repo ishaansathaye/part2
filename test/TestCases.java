@@ -30,22 +30,6 @@ public class TestCases
    }
 
    @Test
-   public void testConstructor()
-   {
-      // This will not compile until you implement the Applicant class
-      List<CourseGrade> grades = Arrays.asList(
-         new CourseGrade("Intro to CS", 100),
-         new CourseGrade("Data Structures", 95),
-         new CourseGrade("Algorithms", 91),
-         new CourseGrade("Computer Organization", 91),
-         new CourseGrade("Operating Systems", 75),
-         new CourseGrade("Non-CS", 83)
-      );
-      Applicant testApplicant = new Applicant("Aakash", grades);
-      assertEquals("Aakash", testApplicant.getName());
-   }
-
-   @Test
    public void testGetGrades()
    {
       // This will not compile until you implement the Applicant class
@@ -57,8 +41,8 @@ public class TestCases
          new CourseGrade("Operating Systems", 75),
          new CourseGrade("Non-CS", 83)
       );
-      Applicant testApplicant = new Applicant("Aakash", grades);
-      assertEquals("Aakash", testApplicant.getName());
+      Applicant testApplicant = new Applicant("S1", grades);
+      assertEquals(grades, testApplicant.getGrades());
    }
 
    @Test
@@ -73,8 +57,8 @@ public class TestCases
          new CourseGrade("Operating Systems", 75),
          new CourseGrade("Non-CS", 83)
       );
-      Applicant testApplicant = new Applicant("Aakash", grades);
-      assertEquals("Aakash", testApplicant.getName());
+      Applicant testApplicant = new Applicant("S2", grades);
+      assertEquals(grades.get(3), testApplicant.getGradeFor("Computer Organization"));
    }
 
    /*
