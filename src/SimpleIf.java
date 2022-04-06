@@ -66,16 +66,24 @@ public class SimpleIf {
      * If the sufficient number of checks are met then the algorithm returns true, which is
      * when means that the applicant can schedule an interview.
      */
-    int checks = 0;
     double overall_gpa_threshold = 3.3;
     int threshold = 85;
 
-    // int overall_gpa_check = 0;
-    // int 
+    int overall_gpa_check = 0;
+    int avg_cs = 0;
+    int non_cs = 0;
+    int course_4 = 0;
+    int lowest_grade = 0;
 
     //Checking if overall GPA is over threshold
     if (applicant.getGPA() > overall_gpa_threshold) {
-      checks++;
+      overall_gpa_check = 100;
+    } 
+    else if (applicant.getGPA() > 2.9 && applicant.getGPA() <= overall_gpa_threshold) {
+      overall_gpa_check = 75;
+    }
+    else {
+      overall_gpa_check = 50;
     }
 
     //Checking if the average of all the non cs grades is over threshold
@@ -89,12 +97,20 @@ public class SimpleIf {
       } else {
         //Checks if the non cs grade is greater than or equal to 80
         if (grade.getScore() >= 80) {
-          checks++;
+          non_cs = 100;
+        } else if (grade.getScore() >= 70 && grade.getScore() < 80) {
+          non_cs = 75;
+        } else {
+          non_cs = 50;
         }
       }
     }
     if (sumGrades/4 > threshold) {
-      checks++;
+      avg_cs = 100;
+    } else if (sumGrades/4 >= 70 && sumGrades/4 < threshold) {
+      avg_cs = 75;
+    } else {
+      avg_cs = 50;
     }
 
     //Checking if at least 4 of the courses are over threshold
@@ -105,19 +121,30 @@ public class SimpleIf {
       }
     }
     if (counter >=4) {
-      checks++;
+      course_4 = 100;
+    } else if (counter >= 3 && counter < 4) {
+      course_4 = 75;
+    } else {
+      course_4 = 50;
     }
 
     //Checking if the lowest score is over 70
     if (Collections.min(course_grades) > 70) {
-      checks++;
+      lowest_grade = 100;
+    } else if (Collections.min(course_grades) >= 60 && Collections.min(course_grades) < 70) {
+      lowest_grade = 75;
+    } else {
+      lowest_grade = 50;
     }
 
-    //Checking if the amount of checks are met
-    if (checks < 3) {
-      return false; 
-    } else {
+    //Creating the weighted equation and then checking if the applicant is qualified
+    double equation = (0.1*overall_gpa_check + 0.5*avg_cs + 0.3*course_4 + 0.05*lowest_grade + 0.05*non_cs);
+    System.out.println(equation);
+    if (equation >= 75) {
       return true;
+    } else {
+      return false;
     }
+
   }
 }

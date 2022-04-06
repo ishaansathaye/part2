@@ -86,7 +86,7 @@ public class TestCases
          new CourseGrade("Non-CS", 75)
       );
       Applicant testApplicant = new Applicant("S3", grades, 3.1);
-      assertFalse("Testing if applicant passes", SimpleIf.analyzeApplicant2(testApplicant));
+      assertTrue("Testing if applicant passes", SimpleIf.analyzeApplicant2(testApplicant));
    }
 
 
