@@ -50,21 +50,21 @@ public class SimpleIf {
 
   public static boolean analyzeApplicant2(Applicant applicant) {
     /**
-     * This filtering algorithms works on checks that need to be passed.
-     * The first check is if the overall gpa that the applicant has is higher than 
-     * the overall gpa threshold.
-     * The next check is if the cs courses have an average score that is higher than the
-     * threshold of 85. In this check, the algo also checks if the applicant is well-rounded
+     * This filtering algorithms works on "checks" that need to be passed.
+     * The first check is if the overall gpa that the applicant has is acceptable on the 
+     * 4.0 scale.
+     * The next check is the average grade of the 5 CS courses. 
+     * In this check, the algo also checks if the applicant is well-rounded
      * so it ensures that the Non-CS grade is greater than or equal to 80.
      * After that the algorithm checks whether at least 4 of the courses in the course list
      * are greater than the threshold of 85.
      * Then the algorithm checks if their lowest grade is acceptable enough to considered
      * for an interview.
-     * These checks then are evaluated to determine if the sufficient conditions are met.
-     * This algorithm checks for applicants that are satisfy all criteria and are overall
-     * a good fit for the company.
-     * If the sufficient number of checks are met then the algorithm returns true, which is
-     * when means that the applicant can schedule an interview.
+     * These checks then are evaluated to determine if the sufficient conditions are met. The evaluations
+     * are done through a weighted equation. This weighted equation takes the scores that are all the checks
+     * and multiplies them by a weight. These weights are predetermined on which aspect that the company needs
+     * to consider is the most important when deciding who to accept for the interview.
+     * If the score from the weighted equation is greater or equal to 90 then the applicant is accepted.
      */
     int threshold = 85;
 
