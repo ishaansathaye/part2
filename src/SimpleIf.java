@@ -66,27 +66,18 @@ public class SimpleIf {
      * If the sufficient number of checks are met then the algorithm returns true, which is
      * when means that the applicant can schedule an interview.
      */
-    double overall_gpa_threshold = 3.3;
     int threshold = 85;
 
-    int overall_gpa_check = 0;
+    double overall_gpa_check;;
     int avg_cs = 0;
     int non_cs = 0;
     int course_4 = 0;
     int lowest_grade = 0;
 
-    //Checking if overall GPA is over threshold
-    if (applicant.getGPA() > overall_gpa_threshold) {
-      overall_gpa_check = 100;
-    } 
-    else if (applicant.getGPA() > 2.9 && applicant.getGPA() <= overall_gpa_threshold) {
-      overall_gpa_check = 75;
-    }
-    else {
-      overall_gpa_check = 50;
-    }
+    //Checking if overall GPA is acceptable
+    overall_gpa_check = (applicant.getGPA()/4.0)*100;
 
-    //Checking if the average of all the non cs grades is over threshold
+    //Checking if the average of all the non cs grades is acceptable
     List<Integer> course_grades = new ArrayList<Integer>();
     List<CourseGrade> grades = applicant.getGrades();
     int sumGrades = 0;
@@ -95,7 +86,7 @@ public class SimpleIf {
       if (grade.getCourseName() != "Non-CS") {
         sumGrades += grade.getScore();
       } else {
-        //Checks if the non cs grade is greater than or equal to 80
+        //Checks if the non cs grade is acceptable
         if (grade.getScore() >= 80) {
           non_cs = 100;
         } else if (grade.getScore() >= 70 && grade.getScore() < 80) {
@@ -105,13 +96,7 @@ public class SimpleIf {
         }
       }
     }
-    if (sumGrades/4 > threshold) {
-      avg_cs = 100;
-    } else if (sumGrades/4 >= 70 && sumGrades/4 < threshold) {
-      avg_cs = 75;
-    } else {
-      avg_cs = 50;
-    }
+    avg_cs = (sumGrades/5);
 
     //Checking if at least 4 of the courses are over threshold
     int counter = 0;
@@ -138,9 +123,9 @@ public class SimpleIf {
     }
 
     //Creating the weighted equation and then checking if the applicant is qualified
-    double equation = (0.1*overall_gpa_check + 0.5*avg_cs + 0.3*course_4 + 0.05*lowest_grade + 0.05*non_cs);
-    System.out.println(equation);
-    if (equation >= 75) {
+    double equation = (0.2*overall_gpa_check + 0.3*avg_cs + 0.1*course_4 + 0.2*lowest_grade + 0.2*non_cs);
+    System.out.println(equation + ": " + overall_gpa_check + " " + avg_cs + " " + course_4 + " " + lowest_grade + " " + non_cs);
+    if (equation >= 90) {
       return true;
     } else {
       return false;

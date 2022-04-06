@@ -85,10 +85,69 @@ public class TestCases
          new CourseGrade("Operating Systems", 69),
          new CourseGrade("Non-CS", 75)
       );
-      Applicant testApplicant = new Applicant("S3", grades, 3.1);
+      Applicant testApplicant = new Applicant("Student1", grades, 3.1);
+      assertFalse("Testing if applicant passes", SimpleIf.analyzeApplicant2(testApplicant));
+   }
+
+   @Test
+   public void testSimpleIf2()
+   {
+      List<CourseGrade> grades = Arrays.asList(
+         new CourseGrade("Intro to CS", 76),
+         new CourseGrade("Data Structures", 89),
+         new CourseGrade("Algorithms", 90),
+         new CourseGrade("Computer Organization", 65),
+         new CourseGrade("Operating Systems", 90),
+         new CourseGrade("Non-CS", 88)
+      );
+      Applicant testApplicant = new Applicant("Student2", grades, 3.3);
+      assertFalse("Testing if applicant passes", SimpleIf.analyzeApplicant2(testApplicant));
+   }
+
+   @Test
+   public void testSimpleIf3()
+   {
+      List<CourseGrade> grades = Arrays.asList(
+         new CourseGrade("Intro to CS", 90),
+         new CourseGrade("Data Structures", 90),
+         new CourseGrade("Algorithms", 90),
+         new CourseGrade("Computer Organization", 90),
+         new CourseGrade("Operating Systems", 90),
+         new CourseGrade("Non-CS", 71)
+      );
+      Applicant testApplicant = new Applicant("Student3", grades, 3.3);
+      assertFalse("Testing if applicant passes", SimpleIf.analyzeApplicant2(testApplicant));
+   }
+
+   @Test
+   public void testSimpleIf4()
+   {
+      List<CourseGrade> grades = Arrays.asList(
+         new CourseGrade("Intro to CS", 90),
+         new CourseGrade("Data Structures", 90),
+         new CourseGrade("Algorithms", 90),
+         new CourseGrade("Computer Organization", 90),
+         new CourseGrade("Operating Systems", 90),
+         new CourseGrade("Non-CS", 80)
+      );
+      Applicant testApplicant = new Applicant("Student4", grades, 3.3);
       assertTrue("Testing if applicant passes", SimpleIf.analyzeApplicant2(testApplicant));
    }
 
+   @Test
+   public void testSimpleIf5()
+   {
+      List<CourseGrade> grades = Arrays.asList(
+         new CourseGrade("Intro to CS", 85),
+         new CourseGrade("Data Structures", 90),
+         new CourseGrade("Algorithms", 90),
+         new CourseGrade("Computer Organization", 88),
+         new CourseGrade("Operating Systems", 90),
+         new CourseGrade("Non-CS", 75)
+      );
+      Applicant testApplicant = new Applicant("Student5", grades, 4.0);
+      assertTrue("Testing if applicant passes", SimpleIf.analyzeApplicant2(testApplicant));
+   }
 
    /*
     * The tests below here are to verify the basic requirements regarding
