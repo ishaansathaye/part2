@@ -12,6 +12,12 @@ public class Applicant {
         this.gpa = gpa;
     }
 
+    public Applicant(String name, List<CourseGrade> grades) {
+        this.name = name;
+        this.grades = grades;
+        this.gpa = 4.0;
+    }
+
     public String getName()
     {
       return name;
