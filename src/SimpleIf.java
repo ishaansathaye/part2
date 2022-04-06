@@ -65,6 +65,9 @@ public class SimpleIf {
      * and multiplies them by a weight. These weights are predetermined on which aspect that the company needs
      * to consider is the most important when deciding who to accept for the interview.
      * If the score from the weighted equation is greater or equal to 90 then the applicant is accepted.
+     * I feel as that this method is ethical because it a little based on college applications where there are
+     * different aspects and a certain college considers one aspect more important than another. In this way,
+     * the company can get applicants that are strong in the aspect that they feel is the most important.
      */
     int threshold = 85;
 
